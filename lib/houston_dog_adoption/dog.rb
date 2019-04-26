@@ -1,0 +1,3 @@
+class HoustonDogAdoption::Dog
+
+end

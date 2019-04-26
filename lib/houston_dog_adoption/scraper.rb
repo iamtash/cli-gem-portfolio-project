@@ -1,0 +1,3 @@
+class HoustonDogAdoption::Scraper
+
+end
