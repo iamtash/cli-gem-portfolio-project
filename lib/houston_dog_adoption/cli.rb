@@ -1,5 +1,7 @@
 #CLI Controller
 
+require_relative '../houston_dog_adoption.rb'
+
 class HoustonDogAdoption::CLI
 
   def call
@@ -11,6 +13,6 @@ class HoustonDogAdoption::CLI
   #method that presents initial data
 
   #method that presents options and gets user input
-  
+
 
 end

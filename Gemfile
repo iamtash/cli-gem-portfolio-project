@@ -1,4 +1,8 @@
 source "https://rubygems.org"
 
 # Specify your gem's dependencies in houston_dog_adoption.gemspec
-gemspec
+
+
+gem 'pry'
+gem 'nokogiri', '1.6'
+gem 'rspec'
