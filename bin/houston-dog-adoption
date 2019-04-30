@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/houston_dog_adoption'
+require_relative '../lib/houston_dog_adoption.rb'
 
 HoustonDogAdoption::CLI.new.call
