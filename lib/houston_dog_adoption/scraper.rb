@@ -13,10 +13,10 @@ class HoustonDogAdoption::Scraper
 
     cards.collect do |card|
       {
-        name: card.css("div.list-animal-name").text,
+        name: card.css("div.list-animal-name").text.downcase.capitalize,
         breed: card.css("div.list-animal-breed").text,
         gender: card.css("div.list-animal-sexSN").text.split('/').first,
-        age: card.css("div.list-animal-age").text, 
+        age: card.css("div.list-animal-age").text,
         details_popup: BASEURL + card.css("a").attribute("href").value[/[']\S+[']/][1..-2]
       }
 
