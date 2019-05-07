@@ -56,8 +56,11 @@ class HoustonDogAdoption::Dog
       dog.age_group = '7' if (73..84).include?(dog.months_old)
       dog.age_group = '8' if (85..96).include?(dog.months_old)
       dog.age_group = '9' if (97..108).include?(dog.months_old)
+      dog.age_group = '10' if (109..120).include?(dog.months_old)
+      dog.age_group = '11' if (121..132).include?(dog.months_old)
+      dog.age_group = '12' if (133..144).include?(dog.months_old)
     end
-    
+
   end
 
 
