@@ -80,6 +80,7 @@ class HoustonDogAdoption::CLI
 
     self.breed_choice = 'dog' if breed_choice == ''
     by_breed_arr.each {|dog| puts "#{dog.name}:  #{dog.gender.downcase}, #{dog.age} old, #{dog.color.downcase} #{dog.breed}"}
+    one_match?(by_breed_arr)
   end
 
 
@@ -120,13 +121,18 @@ class HoustonDogAdoption::CLI
     end
 
     the_dog = dog_arr.find {|dog| dog.name.downcase == dog_choice.downcase}
-    if the_dog.gender == 'Male'
-      puts "You have chosen #{the_dog.name}! He is a #{the_dog.size.downcase.strip}, #{report_age(the_dog)}-old #{the_dog.color.downcase} #{the_dog.breed}."
+    report_match(the_dog)
+  end
+
+  def report_match(dog)
+    if dog.gender == 'Male'
+      puts "You have chosen #{dog.name}! He is a #{dog.size.downcase.strip}, #{report_age(dog)}-old #{dog.color.downcase} #{dog.breed}."
     else
-      puts "You have chosen #{the_dog.name}! She is a #{the_dog.size.downcase.strip}, #{report_age(the_dog)}-old #{the_dog.color.downcase} #{the_dog.breed}."
+      puts "You have chosen #{dog.name}! She is a #{dog.size.downcase.strip}, #{report_age(dog)}-old #{dog.color.downcase} #{dog.breed}."
     end
-    puts "Here is #{the_dog.name}'s bio: #{the_dog.bio}" if the_dog.bio != ""
+    puts "Here is #{dog.name}'s bio: #{dog.bio}" if dog.bio != ""
     puts "Please contact us ASAP to set up a meet-and-greet with your dream pup!"
+    exit
   end
 
   def report_age(dog)
@@ -150,6 +156,7 @@ class HoustonDogAdoption::CLI
     end
 
       by_age_arr = dog_arr.select {|dog| dog.age_group == age_choice}
+      one_match?(by_age_arr)
       choose_dog(by_age_arr)
   end
 
@@ -166,6 +173,7 @@ class HoustonDogAdoption::CLI
     end
 
     by_color_arr = dog_arr.select {|dog| dog.color.downcase.include?(color_choice)}
+    one_match?(by_color_arr)
     choose_dog(by_color_arr)
 
   end
@@ -186,7 +194,16 @@ class HoustonDogAdoption::CLI
     end
 
     by_size_arr = dog_arr.select {|dog| dog.size.downcase == size_choice}
+    one_match?(by_size_arr)
     choose_dog(by_size_arr)
+  end
+
+
+  def one_match?(dog_arr)
+    if dog_arr.length == 1
+      puts "You have one match!"
+      report_match(dog_arr.first)
+    end
   end
 
 end
