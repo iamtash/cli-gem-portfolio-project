@@ -52,7 +52,7 @@ class HoustonDogAdoption::CLI
       self.size_choice = gets.chomp.downcase
       if !dog_arr.any? {|dog| dog.size.downcase == size_choice}
         if ['small', 'medium', 'large'].include?(size_choice)
-          puts''
+          puts ''
           puts "Sorry, we don't have any #{size_choice} #{gender_choice} #{breed_choice}s. Please enter a different size."
           puts ''
         elsif size_choice == ''
@@ -83,7 +83,6 @@ class HoustonDogAdoption::CLI
       self.breed_choice = gets.chomp.downcase
 
       if breed_choice == ''
-        puts ''
         puts "You still have #{by_size_arr.length} dogs to choose from!"
         puts ''
         self.selection = by_size_arr
@@ -145,6 +144,7 @@ class HoustonDogAdoption::CLI
         narrow_search
         pick_a_dog
       elsif input != 'no'
+        puts ''
         puts "Type 'yes' if you want to refine your search or 'no' if not."
       end
     end
@@ -152,20 +152,21 @@ class HoustonDogAdoption::CLI
 
 
   def choose_age(dog_arr)
-    self.age_choice = nil
+    self.age_choice = 'nil'
 
     until dog_arr.any? {|dog| dog.age_group == age_choice}
       puts ''
-      puts "Enter the maximum number of years of age you are hoping for in a dog."
+      puts "Enter the age in years you are looking for in a dog."
       puts ''
-      age_choice = gets.chomp
+      self.age_choice = gets.chomp
+
       if !dog_arr.any? {|dog| dog.age_group == age_choice}
         if (1..12).include?(age_choice.to_i)
           puts ''
           if age_choice == '1'
-            puts "Sorry! We don't have any #{breed_choice}s that are #{age_choice} year old or less. Please enter a different age."
+            puts "Sorry! We don't have any #{breed_choice}s that are #{age_choice} year old or younger. Please enter a different age."
           else
-            puts "Sorry! We don't have any #{breed_choice}s that are #{age_choice} years old or less. Please enter a different age."
+            puts "Sorry! We don't have any #{breed_choice}s that are #{age_choice} years old. Please enter a different age."
           end
         else
           puts ''
@@ -185,7 +186,7 @@ class HoustonDogAdoption::CLI
       puts ''
       puts "What coat color strikes your fancy?"
       puts ''
-      color_choice = gets.chomp.downcase
+      self.color_choice = gets.chomp.downcase
       if !dog_arr.any? {|dog| dog.color.downcase.include?(color_choice)}
         puts ''
         puts "Sorry, none of our #{gender_choice} #{breed_choice}s are that color! Please enter a different color."
@@ -251,21 +252,26 @@ class HoustonDogAdoption::CLI
   end
 
   def report_match(dog)
+    puts ''
+    puts '========================'
+
     if dog.gender == 'Male'
       puts ''
       puts "You have chosen #{dog.name}! He is a #{dog.size.downcase.strip}, #{report_age(dog).strip}-old #{dog.color.downcase} #{dog.breed}."
-      puts ''
     else
       puts ''
       puts "You have chosen #{dog.name}! She is a #{dog.size.downcase.strip}, #{report_age(dog).strip}-old #{dog.color.downcase} #{dog.breed}."
-      puts ''
     end
+
     if dog.bio != ''
       puts "Here is #{dog.name}'s bio:"
       puts ''
       puts "#{dog.bio}"
     end
+    puts ''
     puts "Please contact us ASAP to set up a meet-and-greet with your dream pup!"
+    puts ''
+    puts '========================'
     pick_another_dog?
     exit
   end
