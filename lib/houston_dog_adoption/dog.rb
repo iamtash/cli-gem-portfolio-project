@@ -46,6 +46,17 @@ class HoustonDogAdoption::Dog
       dog.months_old = years.to_i*12 + months.to_i
     end
 
+  #grammatical possibilities
+  # 1 year
+  # 2 years
+  # 10 years
+  # 1 year 1 month
+  # 1 year 2 months
+  # 2 years 1 month
+  # 10 years 1 month
+  # 2 years 2 months
+  # 10 years 2 months
+
     HoustonDogAdoption::Dog.all.each do |dog|
       dog.age_group = '1' if (1..12).include?(dog.months_old)
       dog.age_group = '2' if (13..24).include?(dog.months_old)

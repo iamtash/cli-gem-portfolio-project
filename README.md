@@ -22,7 +22,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Launch program by typing:
+
+    ./bin/houston-dog-adoption
 
 ## Development
 
