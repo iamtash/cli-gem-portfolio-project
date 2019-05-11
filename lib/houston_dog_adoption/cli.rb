@@ -7,11 +7,7 @@ class HoustonDogAdoption::CLI
   attr_accessor :size_choice, :selection, :breed_choice, :age_choice, :color_choice, :gender_choice, :dog_choice
 
   def initialize
-    self.size_choice = 'nil'
-    self.breed_choice = 'nil'
-    self.age_choice = 'nil'
-    self.color_choice = 'nil'
-    self.gender_choice = 'nil'
+    self.reset
   end
 
   def call
@@ -33,6 +29,14 @@ class HoustonDogAdoption::CLI
     one_match?(selection)
     choose_dog(selection)
     report_match(dog_choice)
+  end
+
+  def reset
+    self.size_choice = 'nil'
+    self.breed_choice = 'nil'
+    self.age_choice = 'nil'
+    self.color_choice = 'nil'
+    self.gender_choice = 'nil'
   end
 
   def make_dogs
@@ -109,14 +113,15 @@ class HoustonDogAdoption::CLI
           end
         else
           if selection.length == 1
-            puts "We have #{selection.length} #{breed_choice} available for adoption!"
+            puts "We have #{selection.length} #{size_choice} #{breed_choice} available for adoption!"
           else
             puts "We have #{selection.length} #{size_choice} #{self.breed_choice_plural} available for adoption!"
           end
         end
-        puts ''
-        puts '------------------------------'
+
       end
+      puts ''
+      puts '------------------------------'
 
     end
 
@@ -315,6 +320,7 @@ class HoustonDogAdoption::CLI
 
       case input
       when 'yes'
+        self.reset
         self.search
       when 'no'
         puts ''
