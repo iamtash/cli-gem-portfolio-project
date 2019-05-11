@@ -6,6 +6,14 @@ class HoustonDogAdoption::CLI
 
   attr_accessor :size_choice, :selection, :breed_choice, :age_choice, :color_choice, :gender_choice, :dog_choice
 
+  def initialize
+    self.size_choice = nil
+    self.breed_choice = nil
+    self.age_choice = nil
+    self.color_choice = nil
+    self.gender_choice = nil
+  end
+
   def call
     make_dogs
     add_dog_details
@@ -45,8 +53,6 @@ class HoustonDogAdoption::CLI
 
 
   def choose_size(dog_arr)
-    self.size_choice = nil
-
     until dog_arr.any? {|dog| dog.size.downcase == size_choice} || size_choice == ''
       puts ''
       puts "Are you looking for a small, medium, or large dog? Hit the 'Enter' key if you're not sure."
@@ -76,8 +82,6 @@ class HoustonDogAdoption::CLI
 
 
   def choose_breed(dog_arr)
-    self.breed_choice = 'nil'
-
     until HoustonDogAdoption::Dog.all_valid_breeds(dog_arr).map {|breed| breed.downcase}.include?(breed_choice) || breed_choice == ''
       puts ''
       puts "Type a breed you want or hit 'Enter' if you don't have a preference.\nType 'breeds' if you want to see what we have."
@@ -172,7 +176,6 @@ class HoustonDogAdoption::CLI
 
 
   def choose_age(dog_arr)
-    self.age_choice = 'nil'
 
     until dog_arr.any? {|dog| dog.age_group == age_choice}
       puts ''
@@ -200,8 +203,6 @@ class HoustonDogAdoption::CLI
 
 
   def choose_color(dog_arr)
-    self.color_choice = 'nil'
-
     until HoustonDogAdoption::Dog.all_valid_colors(dog_arr).map {|color| color.downcase}.include?(color_choice)
       puts ''
       puts "What coat color strikes your fancy?"
@@ -217,7 +218,6 @@ class HoustonDogAdoption::CLI
   end
 
   def choose_gender(dog_arr)
-    self.gender_choice = nil
     until ['male', 'female', ''].include?(gender_choice)
       puts ''
       puts "Are you looking for a male or female?"
