@@ -22,6 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
+Help users who are looking to adopt a dog identify the perfect dog for them.
+
 Launch program by typing:
 
     ./bin/houston-dog-adoption

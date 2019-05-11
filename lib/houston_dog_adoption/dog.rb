@@ -3,7 +3,7 @@ require 'pry'
 
 class HoustonDogAdoption::Dog
 
-  attr_accessor :name, :breed, :gender, :age, :details_popup, :size, :color, :bio, :months_old, :age_group, :valid_breeds
+  attr_accessor :name, :breed, :gender, :age, :details_popup, :size, :color, :bio, :months_old, :age_group, :valid_breeds, :valid_colors
   @@all = []
 
   def self.all
@@ -80,6 +80,14 @@ class HoustonDogAdoption::Dog
 
   def self.all_valid_breeds(dog_arr)
     dog_arr.map {|dog| dog.valid_breeds}.flatten.uniq
+  end
+
+  def self.valid_colors
+    HoustonDogAdoption::Dog.all.each {|dog| dog.valid_colors = dog.color.split('/')}
+  end
+
+  def self.all_valid_colors(dog_arr)
+    dog_arr.map {|dog| dog.valid_colors}.flatten.uniq
   end
 
 

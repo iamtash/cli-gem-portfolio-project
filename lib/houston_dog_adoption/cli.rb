@@ -40,6 +40,7 @@ class HoustonDogAdoption::CLI
     end
     HoustonDogAdoption::Dog.age_groups
     HoustonDogAdoption::Dog.valid_breeds
+    HoustonDogAdoption::Dog.valid_colors
   end
 
 
@@ -201,18 +202,18 @@ class HoustonDogAdoption::CLI
   def choose_color(dog_arr)
     self.color_choice = 'nil'
 
-    until dog_arr.any? {|dog| dog.color.downcase.include?(color_choice)}
+    until HoustonDogAdoption::Dog.all_valid_colors(dog_arr).map {|color| color.downcase}.include?(color_choice)
       puts ''
       puts "What coat color strikes your fancy?"
       puts ''
       self.color_choice = gets.chomp.downcase
-      if !dog_arr.any? {|dog| dog.color.downcase.include?(color_choice)}
+      if !HoustonDogAdoption::Dog.all_valid_colors(dog_arr).map {|color| color.downcase}.include?(color_choice)
         puts ''
         puts "Sorry, none of our #{gender_choice} #{self.breed_choice_plural} are that color! Please enter a different color."
       end
     end
 
-    self.selection = dog_arr.select {|dog| dog.color.downcase.include?(color_choice)}
+    self.selection = dog_arr.select {|dog| dog.valid_colors.map {|color| color.downcase}.include?(color_choice)}
   end
 
   def choose_gender(dog_arr)
