@@ -7,21 +7,21 @@ class HoustonDogAdoption::CLI
   attr_accessor :size_choice, :selection, :breed_choice, :age_choice, :color_choice, :gender_choice, :dog_choice
 
   def initialize
-    self.size_choice = nil
-    self.breed_choice = nil
-    self.age_choice = nil
-    self.color_choice = nil
-    self.gender_choice = nil
+    self.size_choice = 'nil'
+    self.breed_choice = 'nil'
+    self.age_choice = 'nil'
+    self.color_choice = 'nil'
+    self.gender_choice = 'nil'
   end
 
   def call
     make_dogs
     add_dog_details
     puts "Thank you for your interest in adopting a dog! Let's try to identify your perfect fur-ever friend!"
-    filter_search
+    search
   end
 
-  def filter_search
+  def search
     choose_size(HoustonDogAdoption::Dog.all)
     choose_breed(selection)
     one_match?(selection)
@@ -315,7 +315,7 @@ class HoustonDogAdoption::CLI
 
       case input
       when 'yes'
-        self.filter_search
+        self.search
       when 'no'
         puts ''
         puts 'Thank you for choosing to adopt! Have a wonderful day!'
