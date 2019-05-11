@@ -3,7 +3,7 @@ require 'pry'
 
 class HoustonDogAdoption::Dog
 
-  attr_accessor :name, :breed, :gender, :age, :details_popup, :size, :color, :bio, :months_old, :age_group
+  attr_accessor :name, :breed, :gender, :age, :details_popup, :size, :color, :bio, :months_old, :age_group, :valid_breeds
   @@all = []
 
   def self.all
@@ -72,6 +72,14 @@ class HoustonDogAdoption::Dog
       dog.age_group = '12' if (133..144).include?(dog.months_old)
     end
 
+  end
+
+  def self.valid_breeds
+    HoustonDogAdoption::Dog.all.each {|dog| dog.valid_breeds = dog.breed.split(/[,\/]/).map {|breed| breed.strip}}
+  end
+
+  def self.all_valid_breeds(dog_arr)
+    dog_arr.map {|dog| dog.valid_breeds}.flatten.uniq
   end
 
 
