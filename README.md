@@ -1,8 +1,7 @@
 # HoustonDogAdoption
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/houston_dog_adoption`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem helps users who are looking to adopt a dog in Houston, Texas identify the perfect dog for them.
+It utilizes website data on adoptable dogs being housed by the Houston Humane Society to guide the user through the selection process.
 
 ## Installation
 
@@ -21,8 +20,6 @@ Or install it yourself as:
     $ gem install houston_dog_adoption
 
 ## Usage
-
-Help users who are looking to adopt a dog identify the perfect dog for them.
 
 Launch program by typing:
 
