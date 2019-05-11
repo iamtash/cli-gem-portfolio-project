@@ -102,9 +102,17 @@ class HoustonDogAdoption::CLI
         self.selection = dog_arr.select {|dog| dog.valid_breeds.map {|breed| breed.downcase}.include?(breed_choice)}
         puts ''
         if size_choice == ''
-          puts "We have #{selection.length} #{self.breed_choice_plural} available for adoption!"
+          if selection.length == 1
+            puts "We have #{selection.length} #{breed_choice} available for adoption!"
+          else
+            puts "We have #{selection.length} #{self.breed_choice_plural} available for adoption!"
+          end
         else
-          puts "We have #{selection.length} #{size_choice} #{self.breed_choice_plural} available for adoption!"
+          if selection.length == 1
+            puts "We have #{selection.length} #{breed_choice} available for adoption!"
+          else
+            puts "We have #{selection.length} #{size_choice} #{self.breed_choice_plural} available for adoption!"
+          end
         end
         puts ''
         puts '------------------------------'
