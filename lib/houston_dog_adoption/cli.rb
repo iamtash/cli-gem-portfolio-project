@@ -6,10 +6,6 @@ class HoustonDogAdoption::CLI
 
   attr_accessor :size_choice, :selection, :breed_choice, :age_choice, :color_choice, :gender_choice, :dog_choice
 
-  def initialize
-    self.reset
-  end
-
   def call
     make_dogs
     add_dog_details
@@ -31,13 +27,6 @@ class HoustonDogAdoption::CLI
     report_match(dog_choice)
   end
 
-  def reset
-    self.size_choice = 'nil'
-    self.breed_choice = 'nil'
-    self.age_choice = 'nil'
-    self.color_choice = 'nil'
-    self.gender_choice = 'nil'
-  end
 
   def make_dogs
     dogs_array = HoustonDogAdoption::Scraper.scrape_adoptables_page('https://ws.petango.com/webservices/adoptablesearch/wsAdoptableAnimals.aspx?species=Dog&sex=A&agegroup=All&location=&site=&onhold=A&orderby=Name&colnum=6&css=https://ws.petango.com/WebServices/adoptablesearch/css/styles.css&authkey=hxym4cn4tnbm0ys26jo20ebskdhb1t3wyfgabvt03wqup07vcd&recAmount=&detailsInPopup=Yes&featuredPet=Exclude&stageID=')
@@ -57,6 +46,7 @@ class HoustonDogAdoption::CLI
 
 
   def choose_size(dog_arr)
+    self.size_choice = 'nil'
     until dog_arr.any? {|dog| dog.size.downcase == size_choice} || size_choice == ''
       puts ''
       puts "Are you looking for a small, medium, or large dog? Hit the 'Enter' key if you're not sure."
@@ -86,6 +76,7 @@ class HoustonDogAdoption::CLI
 
 
   def choose_breed(dog_arr)
+    self.breed_choice = 'nil'
     until HoustonDogAdoption::Dog.all_valid_breeds(dog_arr).map {|breed| breed.downcase}.include?(breed_choice) || breed_choice == ''
       puts ''
       puts "Type a breed you want or hit 'Enter' if you don't have a preference.\nType 'breeds' if you want to see what we have."
@@ -189,6 +180,7 @@ class HoustonDogAdoption::CLI
 
 
   def choose_age(dog_arr)
+    self.age_choice = 'nil'
 
     until dog_arr.any? {|dog| dog.age_group == age_choice}
       puts ''
@@ -216,6 +208,7 @@ class HoustonDogAdoption::CLI
 
 
   def choose_color(dog_arr)
+    self.color_choice = 'nil'
     until HoustonDogAdoption::Dog.all_valid_colors(dog_arr).map {|color| color.downcase}.include?(color_choice)
       puts ''
       puts "What coat color strikes your fancy?"
@@ -231,6 +224,7 @@ class HoustonDogAdoption::CLI
   end
 
   def choose_gender(dog_arr)
+    self.gender_choice = 'nil'
     until ['male', 'female', ''].include?(gender_choice)
       puts ''
       puts "Are you looking for a male or female?"
@@ -320,7 +314,6 @@ class HoustonDogAdoption::CLI
 
       case input
       when 'yes'
-        self.reset
         self.search
       when 'no'
         puts ''
