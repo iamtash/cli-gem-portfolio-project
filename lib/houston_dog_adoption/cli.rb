@@ -9,9 +9,9 @@ class HoustonDogAdoption::CLI
   def call
     make_dogs
     add_dog_details
-    puts '******************************'
+    puts '********************************************'
     puts "Thank you for your interest in adopting a dog! Let's try to identify your perfect fur-ever friend!"
-    puts '******************************'
+    puts '********************************************'
     search
   end
 
@@ -71,7 +71,7 @@ class HoustonDogAdoption::CLI
         puts ''
         puts "We have #{selection.length} #{size_choice} adoptable dogs!"
         puts ''
-        puts '------------------------------'
+        puts '--------------------------------------------'
       end
     end
   end
@@ -114,7 +114,7 @@ class HoustonDogAdoption::CLI
 
       end
       puts ''
-      puts '------------------------------'
+      puts '--------------------------------------------'
 
     end
 
@@ -257,7 +257,7 @@ class HoustonDogAdoption::CLI
     puts ''
     dog_arr.each {|dog| puts "#{dog.name}: #{dog.size.downcase.strip} #{dog.gender.downcase.strip}, #{dog.age} old, #{dog.color.downcase} #{dog.breed}"}
     puts ''
-    puts '------------------------------'
+    puts '--------------------------------------------'
 
     self.narrow_search_again?
 
@@ -281,7 +281,7 @@ class HoustonDogAdoption::CLI
 
   def report_match(dog)
     puts ''
-    puts '=============================='
+    puts '============================================'
 
     if dog.gender == 'Male'
       puts ''
@@ -300,7 +300,7 @@ class HoustonDogAdoption::CLI
     puts ''
     puts "Please contact us ASAP to set up a meet-and-greet with your dream pup!"
     puts ''
-    puts '=============================='
+    puts '============================================'
     pick_another_dog?
   end
 
@@ -318,9 +318,9 @@ class HoustonDogAdoption::CLI
         self.search
       when 'no'
         puts ''
-        puts '******************************'
+        puts '********************************************'
         puts 'Thank you for choosing to adopt! Have a wonderful day!'
-        puts '******************************'
+        puts '********************************************'
         exit
       else
         puts ''
