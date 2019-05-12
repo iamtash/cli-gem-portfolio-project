@@ -9,7 +9,9 @@ class HoustonDogAdoption::CLI
   def call
     make_dogs
     add_dog_details
+    puts '******************************'
     puts "Thank you for your interest in adopting a dog! Let's try to identify your perfect fur-ever friend!"
+    puts '******************************'
     search
   end
 
@@ -121,10 +123,8 @@ class HoustonDogAdoption::CLI
   end
 
   def breed_choice_plural
-    if breed_choice == 'mix'
+    if breed_choice.end_with?('x', 's')
       breed_choice + 'es'
-    elsif breed_choice == 'belgian malinois'
-      breed_choice
     elsif %w(Large (over 44 lbs fully grown), Medium (up to 44 lbs fully grown), Standard Smooth Haired, Silky).include?(breed_choice)
       breed_choice + 'dogs'
     elsif breed_choice.end_with?('y')
@@ -254,9 +254,10 @@ class HoustonDogAdoption::CLI
   def choose_dog(dog_arr)
     puts ''
     puts "We have #{selection.length} adoptable dogs that meet your desired criteria:"
-
     puts ''
     dog_arr.each {|dog| puts "#{dog.name}: #{dog.size.downcase.strip} #{dog.gender.downcase.strip}, #{dog.age} old, #{dog.color.downcase} #{dog.breed}"}
+    puts ''
+    puts '------------------------------'
 
     self.narrow_search_again?
 
@@ -317,7 +318,9 @@ class HoustonDogAdoption::CLI
         self.search
       when 'no'
         puts ''
+        puts '******************************'
         puts 'Thank you for choosing to adopt! Have a wonderful day!'
+        puts '******************************'
         exit
       else
         puts ''
