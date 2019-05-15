@@ -225,7 +225,7 @@ class HoustonDogAdoption::CLI
 
   def choose_gender(dog_arr)
     self.gender_choice = 'nil'
-    until ['male', 'female', ''].include?(gender_choice)
+    until ['male', 'female'].include?(gender_choice)
       puts ''
       puts "Are you looking for a male or female?"
       puts ''
