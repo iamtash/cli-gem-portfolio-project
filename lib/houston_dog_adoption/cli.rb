@@ -1,6 +1,7 @@
 #CLI Controller
 require_relative '../houston_dog_adoption.rb'
 require 'pry'
+require 'colorize'
 
 class HoustonDogAdoption::CLI
 
