@@ -42,3 +42,9 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the HoustonDogAdoption project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/<github username>/houston_dog_adoption/blob/master/CODE_OF_CONDUCT.md).
+
+## Blog & Video
+
+[Read about what I learned while building this project!](https://iamtash.github.io/i_cant_believe_i_built_a_real_program)
+
+[Check out a demo of my app!](https://www.youtube.com/watch?v=4nxBCfZTBDg)
