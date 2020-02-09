@@ -47,4 +47,7 @@ Everyone interacting in the HoustonDogAdoption project’s codebases, issue trac
 
 [Read about what I learned while building this project!](https://iamtash.github.io/i_cant_believe_i_built_a_real_program)
 
-[Check out a demo of my app!](https://www.youtube.com/watch?v=4nxBCfZTBDg)
+Click below to check out a demo!<br>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=4nxBCfZTBDg
+" target="_blank"><img src="http://img.youtube.com/vi/4nxBCfZTBDg/0.jpg" 
+alt="Check out a demo of my app" width="240" height="180" border="10" /></a>
